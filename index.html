@@ -1,24 +1,540 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 优先使用最新的IE内核渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 设置视口，确保移动端正常缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 引入编译好的 Tailwind CSS 文件 -->
+    <link rel="stylesheet" href="./dist/style.css" />
+    <title>Tailwind Demo with Image Upload & CRUD</title>
+  </head>
+  <body class="font-sans text-gray-900 bg-gray-100">
+    <!--
+      body 类说明：
+      1. font-sans: 使用无衬线字体（Tailwind 的默认 sans 系列）
+      2. text-gray-900: 设置全局文字颜色为深灰
+      3. bg-gray-100: 设置全局背景为浅灰
+    -->
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./dist/style.css">
-  <title>TAILWIND NPM PROJECT</title>
-</head>
+    <!-- ========== 头部导航栏 ========== -->
+    <header
+      class="bg-gradient-to-r from-blue-600 to-purple-600 p-4 shadow-lg text-white"
+    >
+      <nav class="container mx-auto flex items-center justify-between">
+        <div class="text-xl font-bold">My Tailwind Site</div>
+        <ul class="flex space-x-4">
+          <li>
+            <a href="#" class="hover:underline hover:text-yellow-200">主页</a>
+          </li>
+          <li>
+            <a href="#" class="hover:underline hover:text-yellow-200">关于</a>
+          </li>
+          <li>
+            <a href="#" class="hover:underline hover:text-yellow-200">联系</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-<body class="font-outfit">
+    <!-- ========== 主内容区域 ========== -->
+    <main class="container mx-auto mt-8 px-4">
+      <!-- ========= Hero / Banner 区域 ========= -->
+      <section
+        class="bg-white rounded-lg shadow-md p-8 mb-8 flex flex-col items-center text-center"
+      >
+        <h1 class="text-3xl font-extrabold mb-4 text-gray-800">
+          欢迎来到 Tailwind CSS 世界
+        </h1>
+        <p class="mb-4 text-gray-600 leading-relaxed">
+          这里演示了使用各种 Tailwind CSS
+          类名的页面布局示例，带有详细注释，方便你快速学习。
+        </p>
+        <button
+          class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full shadow-md transform hover:-translate-y-1 hover:shadow-lg transition duration-300"
+        >
+          立即开始
+        </button>
+      </section>
 
-  <div class="contaner mx-auto w-vw90">
-    <h1 class="text-danger font-black">Lorem ipsum dolor sit.</h1>
-    <h2 class="text-crayola_red font-bold">Lorem ipsum dolor sit amet.</h2>
-    <h3 class="bg-darkblue-100 text-white w-max px-4 py-2 border border-solid border-b-gray-400">Lorem ipsum dolor sit amet consectetur.</h3>
-    <button class="btn-main">Click me</button>
-  </div>
+      <!-- ========= 卡片网格布局示例 ========= -->
+      <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
+        <!-- 卡片1 -->
+        <article
+          class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
+        >
+          <img
+            src="https://picasso-static.xiaohongshu.com/fe-platform/9e006ca119d9bc5779558284795d0d96b7096cf4.png"
+            alt="demo"
+            class="w-full h-40 object-cover rounded"
+          />
+          <h3 class="mt-4 text-xl font-bold">卡片标题一</h3>
+          <p class="text-gray-700 mt-2">
+            这里是一段卡片简介，可自由扩展描述文字内容。
+          </p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-gray-500 text-sm">阅读更多</span>
+            <button
+              class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600"
+            >
+              查看
+            </button>
+          </div>
+        </article>
 
+        <!-- 卡片2 -->
+        <article
+          class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
+        >
+          <img
+            src="https://picasso-static.xiaohongshu.com/fe-platform/9e006ca119d9bc5779558284795d0d96b7096cf4.png"
+            alt="demo"
+            class="w-full h-40 object-cover rounded"
+          />
+          <h3 class="mt-4 text-xl font-bold">卡片标题二</h3>
+          <p class="text-gray-700 mt-2">
+            使用 Tailwind CSS 可以非常快速地搭建页面原型。
+          </p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-gray-500 text-sm">阅读更多</span>
+            <button
+              class="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600"
+            >
+              查看
+            </button>
+          </div>
+        </article>
 
-</body>
+        <!-- 卡片3 -->
+        <article
+          class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
+        >
+          <img
+            src="https://picasso-static.xiaohongshu.com/fe-platform/9e006ca119d9bc5779558284795d0d96b7096cf4.png"
+            alt="demo"
+            class="w-full h-40 object-cover rounded"
+          />
+          <h3 class="mt-4 text-xl font-bold">卡片标题三</h3>
+          <p class="text-gray-700 mt-2">
+            灵活的响应式设计，让你的页面适配多种设备尺寸。
+          </p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-gray-500 text-sm">阅读更多</span>
+            <button
+              class="bg-purple-500 text-white px-3 py-1 rounded-md hover:bg-purple-600"
+            >
+              查看
+            </button>
+          </div>
+        </article>
 
+        <!-- 卡片4 (大屏才可见) -->
+        <article
+          class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
+        >
+          <img
+            src="https://picasso-static.xiaohongshu.com/fe-platform/9e006ca119d9bc5779558284795d0d96b7096cf4.png"
+            alt="demo"
+            class="w-full h-40 object-cover rounded"
+          />
+          <h3 class="mt-4 text-xl font-bold">卡片标题四</h3>
+          <p class="text-gray-700 mt-2">
+            这张卡片仅在屏幕较大时（lg）才会自动进入第三列显示。
+          </p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-gray-500 text-sm">阅读更多</span>
+            <button
+              class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600"
+            >
+              查看
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <!-- ========= 表格示例 ========= -->
+      <section class="mb-8">
+        <div class="overflow-x-auto bg-white rounded-lg shadow">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  姓名
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  年龄
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  城市
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr class="hover:bg-gray-100 transition-colors">
+                <td class="px-6 py-4 whitespace-nowrap">张三</td>
+                <td class="px-6 py-4 whitespace-nowrap">25</td>
+                <td class="px-6 py-4 whitespace-nowrap">北京</td>
+              </tr>
+              <tr class="hover:bg-gray-100 transition-colors">
+                <td class="px-6 py-4 whitespace-nowrap">李四</td>
+                <td class="px-6 py-4 whitespace-nowrap">28</td>
+                <td class="px-6 py-4 whitespace-nowrap">上海</td>
+              </tr>
+              <tr class="hover:bg-gray-100 transition-colors">
+                <td class="px-6 py-4 whitespace-nowrap">王五</td>
+                <td class="px-6 py-4 whitespace-nowrap">30</td>
+                <td class="px-6 py-4 whitespace-nowrap">广州</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ========= 表单示例 ========= -->
+      <section class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">联系表单</h2>
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700"
+              >姓名</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="请输入姓名"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >邮箱</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="请输入邮箱"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700"
+              >留言</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="请输入留言内容"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+            ></textarea>
+          </div>
+
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition"
+            >
+              提交
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ========== 图片上传 & CRUD 表格 & 抽屉 (Drawer) ========== -->
+      <section class="bg-white p-6 rounded-lg shadow-md mt-8 mb-8">
+        <h2 class="text-2xl font-bold mb-4">图片上传和 CRUD 示例</h2>
+
+        <!-- “添加”按钮（打开右侧抽屉） -->
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold">示例数据</h3>
+          <button onclick="openDrawer()">
+            <!-- 图标 + 文案 -->
+            <svg
+              class="w-5 h-5 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              ></path>
+            </svg>
+            添加数据
+          </button>
+        </div>
+
+        <!-- CRUD 表格：名称、图片预览、编辑、删除 -->
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-left border border-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 border-b border-gray-200">名称</th>
+                <th class="px-6 py-3 border-b border-gray-200">图片预览</th>
+                <th class="px-6 py-3 border-b border-gray-200">操作</th>
+              </tr>
+            </thead>
+            <tbody id="crud-tbody">
+              <!-- 示例静态数据 -->
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4 border-b border-gray-200">示例名称</td>
+                <td class="px-6 py-4 border-b border-gray-200">
+                  <img
+                    src="https://via.placeholder.com/60"
+                    alt="preview"
+                    class="w-16 h-16 object-cover rounded"
+                  />
+                </td>
+                <td class="px-6 py-4 border-b border-gray-200">
+                  <button
+                    class="bg-yellow-400 text-white px-3 py-1 rounded hover:bg-yellow-500 mr-2"
+                  >
+                    编辑
+                  </button>
+                  <button
+                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                  >
+                    删除
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== 右侧抽屉（Drawer） ========== -->
+    <div
+      id="drawer"
+      class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 z-50 flex flex-col"
+    >
+      <div class="flex justify-between items-center p-4 border-b">
+        <h3 class="text-lg font-semibold">添加/编辑数据</h3>
+        <!-- 关闭按钮 -->
+        <button
+          class="text-gray-500 hover:text-gray-700"
+          onclick="closeDrawer()"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 抽屉主体内容：图片上传 & 名称输入 -->
+      <div class="p-4 flex-1 overflow-auto">
+        <!-- 图片上传区域 -->
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1"
+            >上传图片</label
+          >
+          <!-- 隐藏的 file input，用于真正选择图片 -->
+          <input
+            type="file"
+            accept="image/*"
+            id="uploadImage"
+            class="hidden"
+            onchange="handleImageUpload(event)"
+          />
+          <!-- 自定义“选择图片”按钮 -->
+          <div class="flex items-center space-x-2">
+            <button
+              type="button"
+              class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+              onclick="document.getElementById('uploadImage').click()"
+            >
+              选择图片
+            </button>
+            <span id="fileName" class="text-sm text-gray-600"></span>
+          </div>
+          <!-- 图片预览 -->
+          <div class="mt-2" id="imagePreviewWrapper">
+            <!-- 选中图片后，会在这里显示预览图 -->
+          </div>
+        </div>
+
+        <!-- 名称输入 -->
+        <div class="mb-4">
+          <label
+            for="itemName"
+            class="block text-sm font-medium text-gray-700 mb-1"
+            >名称</label
+          >
+          <input
+            type="text"
+            id="itemName"
+            class="block w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="请输入名称"
+          />
+        </div>
+      </div>
+
+      <!-- 抽屉底部按钮 -->
+      <div class="p-4 border-t flex justify-end space-x-2">
+        <button
+          class="px-4 py-2 rounded border border-gray-300 text-gray-700 hover:bg-gray-100"
+          onclick="closeDrawer()"
+        >
+          取消
+        </button>
+        <button
+          class="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600"
+          onclick="saveData()"
+        >
+          保存
+        </button>
+      </div>
+    </div>
+
+    <!-- 半透明遮罩层，在打开抽屉时可阻止底层点击 -->
+    <div
+      id="drawerOverlay"
+      class="fixed inset-0 bg-black bg-opacity-30 hidden z-40"
+      onclick="closeDrawer()"
+    ></div>
+
+    <!-- ========== 页脚 ========== -->
+    <footer class="bg-gray-800 text-white mt-8 py-4">
+      <div class="container mx-auto text-center">
+        © 2025 My Tailwind Site. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- ========== JavaScript：Drawer & CRUD 功能示例 ========== -->
+    <script>
+      const drawer = document.getElementById("drawer");
+      const drawerOverlay = document.getElementById("drawerOverlay");
+      const uploadImageInput = document.getElementById("uploadImage");
+      const imagePreviewWrapper = document.getElementById(
+        "imagePreviewWrapper"
+      );
+      const itemNameInput = document.getElementById("itemName");
+      const crudTbody = document.getElementById("crud-tbody");
+      const fileNameSpan = document.getElementById("fileName");
+
+      let selectedImageDataUrl = ""; // 用于存储上传的图片Base64或ObjectURL
+
+      // 打开抽屉
+      function openDrawer() {
+        drawerOverlay.classList.remove("hidden");
+        drawer.classList.remove("translate-x-full");
+      }
+
+      // 关闭抽屉
+      function closeDrawer() {
+        drawerOverlay.classList.add("hidden");
+        drawer.classList.add("translate-x-full");
+        // 重置表单
+        resetDrawerForm();
+      }
+
+      // 重置抽屉表单
+      function resetDrawerForm() {
+        uploadImageInput.value = null;
+        imagePreviewWrapper.innerHTML = "";
+        itemNameInput.value = "";
+        fileNameSpan.textContent = "";
+        selectedImageDataUrl = "";
+      }
+
+      // 处理图片上传（前端预览）
+      function handleImageUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        fileNameSpan.textContent = file.name;
+
+        // 使用 FileReader 读取本地文件并预览
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          selectedImageDataUrl = e.target.result; // base64数据
+          showImagePreview(selectedImageDataUrl);
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // 显示图片预览
+      function showImagePreview(imgSrc) {
+        imagePreviewWrapper.innerHTML = `
+          <img
+            src="${imgSrc}"
+            alt="preview"
+            class="mt-2 w-24 h-24 object-cover rounded border"
+          />
+        `;
+      }
+
+      // 保存数据到表格 (简单前端示例)
+      function saveData() {
+        const nameValue = itemNameInput.value.trim();
+        if (!nameValue) {
+          alert("请输入名称");
+          return;
+        }
+        // 创建一个新的表格行
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-gray-50";
+
+        tr.innerHTML = `
+          <td class="px-6 py-4 border-b border-gray-200">${nameValue}</td>
+          <td class="px-6 py-4 border-b border-gray-200">
+            ${
+              selectedImageDataUrl
+                ? `<img src="${selectedImageDataUrl}" alt="preview" class="w-16 h-16 object-cover rounded" />`
+                : "暂无图片"
+            }
+          </td>
+          <td class="px-6 py-4 border-b border-gray-200">
+            <button class="bg-yellow-400 text-white px-3 py-1 rounded hover:bg-yellow-500 mr-2">
+              编辑
+            </button>
+            <button
+              class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+              onclick="deleteRow(this)"
+            >
+              删除
+            </button>
+          </td>
+        `;
+        // 将新行添加到表格
+        crudTbody.appendChild(tr);
+
+        // 关闭抽屉
+        closeDrawer();
+      }
+
+      // 删除当前行
+      function deleteRow(btn) {
+        if (confirm("确定要删除该条目吗？")) {
+          const row = btn.parentNode.parentNode;
+          row.parentNode.removeChild(row);
+        }
+      }
+    </script>
+  </body>
 </html>
